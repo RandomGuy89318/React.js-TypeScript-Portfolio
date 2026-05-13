@@ -274,4 +274,136 @@ button {
 .page-transition-wrapper {
   min-height: calc(100vh - 80px);
   padding-top: 100px;
+  padding-bottom: 6rem;
+}
+
+/* --- Responsive Overrides --- */
+
+/* Base Typography Scaling */
+@media (max-width: 768px) {
+  html, body {
+    font-size: 14px;
+  }
+}
+
+/* Container & Spacing */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+@media (max-width: 640px) {
+  .container {
+    padding: 0 1rem;
+  }
+  .page-transition-wrapper {
+    padding-top: 140px; /* More space for wrapped navbar */
+  }
+}
+
+/* Navbar Responsiveness */
+@media (max-width: 800px) {
+  .navbar-container {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 15px !important;
+    padding-top: 15px !important;
+    padding-bottom: 10px !important;
+  }
+  .navbar {
+    height: auto !important;
+    min-height: 80px;
+  }
+  .navbar-list {
+    gap: 1.2rem !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    width: 100%;
+  }
+  .navbar-logo {
+    margin-bottom: 0px !important;
+  }
+  .navbar-clock {
+    display: none !important; /* Hide clock on smaller screens to save space */
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-list {
+    gap: 0.8rem !important;
+  }
+  .navbar-link {
+    font-size: 0.8rem !important;
+  }
+  .navbar-logo {
+    display: none !important; /* Hide logo on very small screens to fit links */
+  }
+}
+
+/* Hero Section */
+@media (max-width: 768px) {
+  section > h1 {
+    font-size: 2.5rem !important;
+  }
+  section > p {
+    font-size: 1rem !important;
+  }
+  .terminal-card {
+    padding: 1.2rem !important;
+  }
+}
+@media (max-width: 480px) {
+  section > h1 {
+    font-size: 2rem !important;
+  }
+}
+
+/* Grids and Flexbox Layouts */
+@media (max-width: 900px) {
+  .home-dashboard-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  .home-right-panel {
+    position: static !important;
+  }
+  .home-right-panel > div {
+    position: static !important; /* disable sticky on mobile */
+  }
+}
+
+@media (max-width: 400px) {
+  div[style*="minmax(300px, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Project and Certificate Lists */
+@media (max-width: 640px) {
+  .terminal-card {
+    padding: 1rem !important;
+  }
+  /* Buttons inside cards */
+  .btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    width: 100%;
+  }
+}
+
+/* Terminal Responsiveness */
+@media (max-width: 768px) {
+  #terminal-input {
+    font-size: 16px !important; /* Prevent iOS zoom */
+  }
+  .terminal-card {
+    overflow-x: auto;
+  }
+}
+
+/* Media & Images */
+img, svg, iframe, video {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
 }

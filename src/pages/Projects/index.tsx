@@ -1,38 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import TechTag from '../../components/ui/TechTag';
 
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  github: string;
-  tags: string[];
-}
+import { projectsData } from '../../data/projects';
 
 const Projects: React.FC = () => {
-  const projects: Project[] = [
-    {
-      id: 1,
-      title: "Project Alpha",
-      description: "A terminal-based project management system built with React and TypeScript.",
-      github: "temp@github",
-      tags: ["React", "TypeScript", "Vite"]
-    },
-    {
-      id: 2,
-      title: "Project Beta",
-      description: "Automated deployment pipeline for static portfolio sites with custom CLI.",
-      github: "temp@github",
-      tags: ["Node.js", "Shell", "Vercel"]
-    },
-    {
-      id: 3,
-      title: "Project Gamma",
-      description: "Data visualization dashboard for system monitoring and resource tracking.",
-      github: "temp@github",
-      tags: ["D3.js", "React", "CSS"]
-    }
-  ];
+  const projects = projectsData;
 
   return (
     <div>
@@ -56,12 +29,12 @@ const Projects: React.FC = () => {
             <p style={styles.cardDesc}>{project.description}</p>
             
             <div style={styles.tagContainer}>
-              {project.tags.map(tag => (
-                <span key={tag} style={styles.tag}>[{tag}]</span>
+              {project.techStack.map(tech => (
+                <TechTag key={tech} name={tech} />
               ))}
             </div>
 
-            <a href={project.github} target="_blank" rel="noopener noreferrer" style={styles.githubLink}>
+            <a href={project.source} target="_blank" rel="noopener noreferrer" style={styles.githubLink}>
               VIEW_SOURCE
             </a>
           </motion.div>
@@ -83,6 +56,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
     gap: '2rem',
+    paddingBottom: '2rem',
   },
   card: {
     display: 'flex',
@@ -103,13 +77,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   tagContainer: {
     display: 'flex',
     flexWrap: 'wrap',
-    gap: '0.5rem',
     marginBottom: '1.5rem',
-  },
-  tag: {
-    fontSize: '0.75rem',
-    color: 'var(--accent-secondary)',
-    fontFamily: 'var(--font-mono)',
   },
   githubLink: {
     display: 'inline-block',

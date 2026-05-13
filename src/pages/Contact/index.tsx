@@ -1,12 +1,34 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
+import { personalInfo } from '../../data/personalInfo';
+
 const Contact: React.FC = () => {
   const [copied, setCopied] = useState<string | null>(null);
 
   const contactInfo = [
-    { label: 'EMAIL', value: 'temp@gmail', icon: '✉' },
-    { label: 'GITHUB', value: 'temp@github', icon: '⌨' },
+    { 
+      label: 'EMAIL', 
+      value: personalInfo.email, 
+      icon: '✉',
+      actionLabel: 'SEND_EMAIL',
+      href: `mailto:${personalInfo.email}`
+    },
+    { 
+      label: 'GITHUB', 
+      value: personalInfo.github, 
+      icon: '⌨',
+      actionLabel: 'VIEW_GITHUB',
+      href: personalInfo.github.startsWith('http') ? personalInfo.github : `https://github.com/${personalInfo.github}`
+    },
+    { 
+      label: 'RESUME', 
+      value: personalInfo.resumePath, 
+      icon: '📄',
+      actionLabel: 'DOWNLOAD_RESUME',
+      href: personalInfo.resumePath,
+      isDownload: true
+    },
   ];
 
   const handleCopy = (text: string, label: string) => {
@@ -32,15 +54,27 @@ const Contact: React.FC = () => {
             className="terminal-card"
             style={styles.card}
           >
-            <div style={styles.label}>{info.label}</div>
+            <div style={styles.label}>{info.icon} {info.label}</div>
             <div style={styles.value}>{info.value}</div>
             
-            <button 
-              onClick={() => handleCopy(info.value, info.label)}
-              style={styles.copyBtn}
-            >
-              {copied === info.label ? '[ COPIED! ]' : '[ COPY_TO_CLIPBOARD ]'}
-            </button>
+            <div style={styles.buttonContainer}>
+              <a 
+                href={info.href}
+                target={!info.isDownload ? "_blank" : undefined}
+                rel={!info.isDownload ? "noopener noreferrer" : undefined}
+                download={info.isDownload ? "Resume.pdf" : undefined}
+                className="btn"
+                style={{ fontSize: '0.8rem', padding: '0.6rem 1rem' }}
+              >
+                [ {info.actionLabel} ]
+              </a>
+              <button 
+                onClick={() => handleCopy(info.value, info.label)}
+                style={styles.copyBtn}
+              >
+                {copied === info.label ? '[ COPIED! ]' : '[ COPY_TO_CLIPBOARD ]'}
+              </button>
+            </div>
           </motion.div>
         ))}
       </div>
@@ -70,7 +104,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
     gap: '2rem',
-    maxWidth: '800px',
+    maxWidth: '1000px',
   },
   card: {
     display: 'flex',
@@ -82,17 +116,29 @@ const styles: { [key: string]: React.CSSProperties } = {
     color: 'var(--accent-secondary)',
     marginBottom: '0.5rem',
     fontFamily: 'var(--font-mono)',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.5rem',
   },
   value: {
-    fontSize: '1.5rem',
+    fontSize: '1.3rem',
     fontWeight: 'bold',
     marginBottom: '2rem',
+    wordBreak: 'break-all',
+  },
+  buttonContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '1rem',
+    alignItems: 'center',
+    marginTop: 'auto',
   },
   copyBtn: {
     color: 'var(--accent-primary)',
     fontSize: '0.8rem',
     padding: '0.5rem 0',
     fontWeight: 'bold',
+    fontFamily: 'var(--font-mono)',
   },
   footer: {
     marginTop: '4rem',

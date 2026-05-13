@@ -1,30 +1,33 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { useTheme } from '../../context/ThemeContext';
+
+import LiveClock from '../ui/LiveClock';
 
 const Navbar: React.FC = () => {
-  const { theme } = useTheme();
+
 
   const navItems = [
     { name: 'Home', path: '/' },
     { name: 'Projects', path: '/projects' },
     { name: 'Certificates', path: '/certificates' },
     { name: 'Contact', path: '/contact' },
+    { name: 'Games', path: '/games' },
   ];
 
   return (
-    <nav style={styles.nav}>
-      <div className="container" style={styles.navContainer}>
-        <div style={styles.logo}>
+    <nav className="navbar" style={styles.nav}>
+      <div className="container navbar-container" style={styles.navContainer}>
+        <div className="navbar-logo" style={styles.logo}>
           <span className="terminal-text">PORTFOLIO</span>
           <span style={styles.cursor}>_</span>
         </div>
 
-        <ul style={styles.navList}>
+        <ul className="navbar-list" style={styles.navList}>
           {navItems.map((item) => (
             <li key={item.path}>
               <NavLink
+                className="navbar-link"
                 to={item.path}
                 style={({ isActive }) => ({
                   ...styles.navLink,
@@ -51,10 +54,8 @@ const Navbar: React.FC = () => {
           ))}
         </ul>
 
-        <div style={styles.themeStatus}>
-          <span className="mono" style={{ fontSize: '0.7rem', opacity: 0.5 }}>
-            MODE: {theme.toUpperCase()}
-          </span>
+        <div className="navbar-clock">
+          <LiveClock />
         </div>
       </div>
     </nav>
