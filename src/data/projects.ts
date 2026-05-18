@@ -23,10 +23,10 @@ export const projectsData: Project[] = [
   },
   {
     id: 2,
-    title: "Project Beta",
-    description: "Automated deployment pipeline for static portfolio sites with custom CLI.",
-    source: "temp@github",
-    techStack: ["Node.js", "Shell", "Vercel"]
+    title: "SortLabs",
+    description: "An interactive algorithm learning platform that visualizes sorting algorithms in real time, compares their performance side by side, and includes a code viewer with detailed explanations to help users understand how each algorithm works and when to use it.",
+    source: "https://github.com/RandomGuy89318/SortLabs.git",
+    techStack: ["React", "TypeScript", "Vite", "Tailwind CSS"]
   },
   {
     id: 3,

@@ -16,12 +16,23 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav className="navbar" style={styles.nav}>
+    <motion.nav
+      className="navbar"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      style={styles.nav}
+    >
       <div className="container navbar-container" style={styles.navContainer}>
-        <div className="navbar-logo" style={styles.logo}>
+        <motion.div
+          className="navbar-logo"
+          style={styles.logo}
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.3 }}
+        >
           <span className="terminal-text">PORTFOLIO</span>
           <span style={styles.cursor}>_</span>
-        </div>
+        </motion.div>
 
         <ul className="navbar-list" style={styles.navList}>
           {navItems.map((item) => (
@@ -36,8 +47,8 @@ const Navbar: React.FC = () => {
               >
                 {({ isActive }) => (
                   <motion.span
-                    whileHover={{ scale: 1.1, color: 'var(--accent-primary)' }}
-                    transition={{ type: 'spring', stiffness: 300 }}
+                    whileHover={{ y: -2, color: 'var(--accent-primary)' }}
+                    transition={{ duration: 0.3 }}
                   >
                     {item.name}
                     {isActive && (
@@ -58,21 +69,17 @@ const Navbar: React.FC = () => {
           <LiveClock />
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 
 const styles: { [key: string]: React.CSSProperties } = {
   nav: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
+    position: 'relative',
     height: '80px',
     backgroundColor: 'var(--navbar-bg)',
     backdropFilter: 'blur(10px)',
     borderBottom: '1px solid var(--border-color)',
-    zIndex: 1000,
     display: 'flex',
     alignItems: 'center',
   },
@@ -81,6 +88,9 @@ const styles: { [key: string]: React.CSSProperties } = {
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
+    maxWidth: '1280px',
+    margin: '0 auto',
+    padding: '0 1.5rem',
   },
   logo: {
     fontSize: '1.2rem',
@@ -102,6 +112,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     textTransform: 'uppercase',
     letterSpacing: '1px',
     fontWeight: 500,
+    transition: 'all 0.3s ease',
   },
   activeIndicator: {
     position: 'absolute',
