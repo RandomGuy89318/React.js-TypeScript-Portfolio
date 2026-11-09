@@ -30,4 +30,19 @@ export const certificates: Certificate[] = [
     description: "Certified by FreeCodeCamp. Learned developer-friendly HTML & CSS, building responsive web pages and mastering CSS Grid and Flexbox.",
     filename: "FreeCodeCamp Responsive Web Design",
   },
+  {
+    title: "Introduction to Cybersecurity",
+    description: "Certified by Cisco Networking Academy. Covers cybersecurity fundamentals, common threats, and security best practices.",
+    filename: "Cisco Introduction to Cybersecurity",
+  },
+  {
+    title: "Cyber Threat Management",
+    description: "Certified by DICT-ITU DTC Initiative through Cisco Networking Academy. Focused on identifying, analyzing, and managing cyber threats.",
+    filename: "DICT Cyber Threat Management",
+  },
+  {
+    title: "Network Defense",
+    description: "Certified by DICT-ITU DTC Initiative through Cisco Networking Academy. Focused on protecting networks, monitoring traffic, and responding to incidents.",
+    filename: "DICT Network Defense",
+  },
 ];

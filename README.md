@@ -30,7 +30,6 @@ A highly immersive, production-ready developer portfolio scaffold built with Rea
 
 ```text
 src/
-├── assets/             # Static images, SVGs, etc.
 ├── components/         
 │   ├── layout/         # Shared layouts (Navbar)
 │   └── ui/             # Reusable UI elements (TechTag, LiveClock, StatsSection)
@@ -73,8 +72,9 @@ src/
 To customize the portfolio with your own info, simply edit the files inside the `src/data/` directory. The React UI components will automatically render your new data.
 - **`projects.ts`**: Update your project cards and tech stacks.
 - **`personalInfo.ts`**: Update your name, titles, contact info, and terminal greeting.
+- **`skills.ts`**: Update the skills shown on the Home page (also counted in the stats).
 - **`certificates.ts`**: Add your certifications, expanding them dynamically with `.png` image previews and `.pdf` documents placed in the `public/certificates` folder.
-- **`stats.ts`**: Customize the metrics shown on the Home page.
+- **`stats.ts`**: Project, certificate, and technology counts are derived automatically; update the GitHub repository count manually if it changes.
 - **`*Questions.ts`**: Update the interactive coding quizzes and puzzles (e.g., `typescriptQuestions.ts`, `reactHookQuestions.ts`).
 
 ## 📝 License

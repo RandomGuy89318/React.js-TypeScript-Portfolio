@@ -122,12 +122,6 @@ const styles: { [key: string]: React.CSSProperties } = {
     height: '2px',
     backgroundColor: 'var(--accent-primary)',
   },
-  themeStatus: {
-    color: 'var(--accent-secondary)',
-    padding: '0.5rem 1rem',
-    border: '1px solid var(--border-color)',
-    borderRadius: '4px',
-  },
 };
 
 export default Navbar;

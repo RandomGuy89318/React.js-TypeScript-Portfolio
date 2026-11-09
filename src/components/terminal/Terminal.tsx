@@ -32,11 +32,6 @@ const Terminal: React.FC = () => {
 
     const cmdDef = terminalCommands.find(c => c.command === rawCmd);
 
-    if (rawCmd === 'clear') {
-      setHistory([]);
-      return;
-    }
-
     if (cmdDef) {
       if (cmdDef.output) {
         setHistory(prev => [...prev, { id: `out-${Date.now()}`, text: cmdDef.output! }]);

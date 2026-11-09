@@ -2,6 +2,7 @@ import React from 'react';
 import HomeHero from './components/HomeHero';
 import HomeMainLeft from './components/HomeMainLeft';
 import HomeSidebarRight from './components/HomeSidebarRight';
+import StatsSection from '../../components/ui/StatsSection';
 
 const Home: React.FC = () => {
   return (
@@ -9,8 +10,11 @@ const Home: React.FC = () => {
       
       {/* 1. Hero Section */}
       <HomeHero />
-      
-      {/* 2. Main Body (2-Column Layout) */}
+
+      {/* 2. Quick Stats */}
+      <StatsSection />
+
+      {/* 3. Main Body (2-Column Layout) */}
       <div className="home-dashboard-grid">
         <div className="home-left-panel">
           <HomeMainLeft />

@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { projectsData } from '../../../data/projects';
+import { skillsData } from '../../../data/skills';
 import TechTag from '../../../components/ui/TechTag';
 
 const HomeMainLeft: React.FC = () => {
   const featuredProjects = projectsData.slice(0, 3);
-  const skills = ["React", "TypeScript", "Node.js", "Vite", "Framer Motion", "Tailwind CSS", "MySQL", "Laravel"];
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
@@ -70,7 +70,7 @@ const HomeMainLeft: React.FC = () => {
           className="terminal-card" 
           style={{ padding: '2rem', display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}
         >
-          {skills.map(skill => (
+          {skillsData.map(skill => (
             <TechTag key={skill} name={skill} />
           ))}
         </motion.div>

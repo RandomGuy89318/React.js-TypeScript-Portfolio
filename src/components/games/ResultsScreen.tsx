@@ -9,7 +9,7 @@ interface ResultsScreenProps {
 
 const ResultsScreen: React.FC<ResultsScreenProps> = ({ score, total, onRestart }) => {
   const percentage = Math.round((score / total) * 100);
-  let feedback = '';
+  let feedback: string;
 
   if (percentage === 100) feedback = "PERFECT RUN. SYSTEM COMPROMISED.";
   else if (percentage >= 70) feedback = "ACCESS GRANTED. GOOD KNOWLEDGE BASE.";

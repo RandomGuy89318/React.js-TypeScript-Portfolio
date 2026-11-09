@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 
 interface TerminalInputProps {
   onCommand: (command: string) => void;
@@ -8,9 +8,6 @@ interface TerminalInputProps {
 const TerminalInput: React.FC<TerminalInputProps> = ({ onCommand, historyCommands }) => {
   const [input, setInput] = useState('');
   const [historyIndex, setHistoryIndex] = useState(-1);
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  // Global click listener removed to prevent auto-scrolling issues
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
@@ -44,7 +41,6 @@ const TerminalInput: React.FC<TerminalInputProps> = ({ onCommand, historyCommand
       <span style={{ color: 'var(--accent-primary)', marginRight: '0.5rem' }}>$</span>
       <input
         id="terminal-input"
-        ref={inputRef}
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
